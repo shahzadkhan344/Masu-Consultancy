@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Signup - Advanced</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/form.css">
+</head>
+
+<body>
+    <div class="singup-container">
+        <div class="signup-card p-4 shadow-lg">
+            <h2 class="text-center mb-4">Company Signup</h2>
+            <form id="companySignupForm">
+
+                <h5>Company Details</h5>
+                <div class="mb-3">
+                    <label class="form-label">Company Name</label>
+                    <input type="text" class="form-control" id="companyName" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Official Email</label>
+                    <input type="email" class="form-control" id="companyEmail" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Phone Number</label>
+                    <input type="tel" class="form-control" maxlength="10" id="companyPhone" required pattern="[0-9]{10}" title="Please enter a 10-digit number">                </div>
+                <div class="mb-3">
+                    <label class="form-label">Company Address</label>
+                    <textarea class="form-control" id="companyAddress" required></textarea>
+                </div>
+
+                <h5>Registration & Compliance</h5>
+                <div class="mb-3">
+                    <label class="form-label">Company Registration Number (CIN/LLP)</label>
+                    <input type="text" class="form-control" id="companyReg" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">GST Number</label>
+                    <input type="text" class="form-control" id="gstNumber" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">PAN Number</label>
+                    <input type="text" class="form-control" id="panNumber" required>
+                </div>
+
+                <h5>Payroll & Banking</h5>
+                <div class="mb-3">
+                    <label class="form-label">Bank Name</label>
+                    <input type="text" class="form-control" id="bankName" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Bank Account Number</label>
+                    <input type="text" class="form-control" id="accountNumber" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">IFSC Code</label>
+                    <input type="text" class="form-control" id="ifscCode" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Payroll Cycle</label>
+                    <select class="form-select" id="payrollCycle" required>
+                            <option value="Monthly">Monthly</option>
+                            <option value="Bi-weekly">Bi-weekly</option>
+                            <option value="Weekly">Weekly</option>
+                    </select>
+                </div>
+
+                <h5>HR & Admin Details</h5>
+                <div class="mb-3">
+                    <label class="form-label">HR Manager Name</label>
+                    <input type="text" class="form-control" id="hrName" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">HR Manager Email</label>
+                    <input type="email" class="form-control" id="hrEmail" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">HR Manager Phone Number</label>
+                    <input type="tel" class="form-control" id="hrPhone" required>
+                </div>
+
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary">Register Company</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+     document.getElementById("companySignupForm").addEventListener("submit", async function (event) {
+    event.preventDefault();
+
+    let companyData = {
+        name: document.getElementById("companyName").value,
+        email: document.getElementById("companyEmail").value,
+        phone: document.getElementById("companyPhone").value,
+        address: document.getElementById("companyAddress").value,
+        regNumber: document.getElementById("companyReg").value,
+        gstNumber: document.getElementById("gstNumber").value,
+        panNumber: document.getElementById("panNumber").value,
+        bankName: document.getElementById("bankName").value,
+        accountNumber: document.getElementById("accountNumber").value,
+        ifscCode: document.getElementById("ifscCode").value,
+        payrollCycle: document.getElementById("payrollCycle").value,
+        hrName: document.getElementById("hrName").value,
+        hrEmail: document.getElementById("hrEmail").value,
+        hrPhone: document.getElementById("hrPhone").value
+    };
+
+    try {
+        let response = await fetch("", {  // <--  API ka URL
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(companyData)
+        });
+
+        let result = await response.json();
+
+        if (response.ok) {
+            alert("Company registered successfully!");
+            document.getElementById("companySignupForm").reset();
+        } else {
+            alert("Error: " + result.message);
+        }
+    } catch (error) {
+        console.error("Error:", error);
+        alert("Something went wrong!");
+    }
+});
+
+
+    </script>
+</body>
+
+</html>

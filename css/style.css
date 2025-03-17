@@ -5,6 +5,9 @@
     font-family: Arial, sans-serif;
 }
 
+body, html {
+   overflow-x: hidden;
+}
 body {
     background: #ffffff;
 }
@@ -186,13 +189,7 @@ p {
     align-items: center;
 }
 
-.swiper-slide img {
-    width: 120px;
-    /* Adjust logo size */
-    height: auto;
-    filter: grayscale(50%);
-    transition: transform 0.3s ease-in-out, filter 0.3s;
-}
+
 
 .swiper-slide img:hover {
     transform: scale(1.1);
@@ -360,10 +357,6 @@ p {
 
 
 
-h1,
-h4 {
-    color: #152354;
-}
 
 /* Grid System */
 .grid {
@@ -582,6 +575,7 @@ h4 {
 
 .banner-page h1 {
     color: #facb76;
+    font-size: 2em;
     font-weight: 500;
 }
 
@@ -818,7 +812,7 @@ h4 {
 }
 
 .social-icons a {
-    color: gray;
+    color: #facb76;
     font-size: 20px;
     margin-right: 10px;
     transition: color 0.3s;
@@ -833,6 +827,7 @@ form input {
     padding: 10px;
     margin-top: 5px;
     border: none;
+    color: #000000;
     border-radius: 5px;
 }
 
@@ -858,3 +853,18 @@ form button:hover {
     margin-top: 20px;
 }
 
+
+
+
+@media (max-width: 768px) {
+            
+    .respo-text {
+        font-size: 2rem !important;
+    }        
+
+    .respo-sec {
+        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column;
+    }
+}
